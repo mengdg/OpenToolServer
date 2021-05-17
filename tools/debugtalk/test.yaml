@@ -1,0 +1,56 @@
+-   config:
+        name: "\u52A8\u6001-\u53D1\u5E03\u52A8\u6001"
+        request:
+            base_url: http://106.75.100.161
+            headers:
+                Accept: '*/*'
+                Accept-Language: zh-cn
+                Authorization: ${get_user_token($uname,$passwd,$url)}
+                Connection: keep-alive
+                Content-Type: application/json
+                User-Agent: ${get_UA()}
+        setup_hooks:
+        - ${sleep(3)}
+        teardown_hooks: []
+        variables:
+        -   uname: +86-18004401069
+        -   passwd: ZF980126
+        -   url: https://argo.blued.cn
+        -   uid: '12118237'
+        -   text: ${text_message()}
+        -   topic_name_lock: '%E8%A1%A8%E6%83%85%E5%8C%85'
+        -   textnull: ''
+        -   text512: ""
+        -   noid: '1'
+        -   nullid: ''''''
+-   test:
+        extract:
+        -   feed_id: content.extra.feed_id
+        name: "\u52A8\u6001-\u53D1\u5E03\u52A8\u6001"
+        request:
+            json:
+                allow_comments: '0'
+                gmt: '28800'
+                is_url: false
+                lat: '39.89986056857639'
+                location_lat: 0
+                location_lot: 0
+                lot: '116.4705338541667'
+                os: ios11.2.5
+                phone: iPhone
+                reading_scope: '0'
+                send: '1'
+                text: "\u54C8\u54C8"
+            method: POST
+            url: /ticktocks/me
+        setup_hooks:
+        - ${sleep(3)}
+        teardown_hooks:
+        - ${sleep(3)}
+        validate:
+        -   check: status_code
+            comparator: equals
+            expected: 200
+        -   check: content.code
+            comparator: equals
+            expected: 200

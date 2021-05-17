@@ -1,0 +1,1 @@
+/data/anaconda2/envs/openapi/bin/python3.7 manage.py runserver 0.0.0.0:8017 --insecure
